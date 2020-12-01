@@ -21,3 +21,8 @@ def check_lettre(lettre,mot):
         if lettre == mot[i]
 
 check_lettre('a','aukb')
+def affichage()
+    mot=choix_mot()
+    mask=""
+    for i in mot:
+        mask=mask+'_'
