@@ -17,11 +17,14 @@ def choix_mot():
     return mot
 
 def check_lettre(lettre,mot):
+    lettres_decouvertes = []
+    i = 0
     for i in range(len(mot)):
-        if lettre == mot[i]
+        if lettre == mot[i]:
+            lettres_decouvertes.append(i)
+    return lettres_decouvertes
 
-check_lettre('a','aukb')
-def affichage()
+def affichage():
     mot=choix_mot()
     mask=""
     for i in mot:
