@@ -10,10 +10,10 @@ def choix_mot():
     #retourne un mot au hasard dans mots.txt
     fichier = open('mots.txt','r')
     contenu = fichier.readline()
-
     liste_mots = contenu.split(' ')
     n = randint(0,len(liste_mots))
     mot = liste_mots[n-1]
+    fichier.close
     return mot
 
 def check_lettre(lettre,mot):
@@ -43,6 +43,18 @@ def check_input(lettre):
     else:
         return False
 
+def check_meilleur_score(score):
+    fichier = open('score.txt','r')
+    meilleur_score = fichier.readline()
+    fichier.close
+    if int(meilleur_score) < score:
+        fichier = open('score.txt','w')
+        fichier.write(str(score))
+        fichier.close
+        return score
+    else:
+        return meilleur_score
+
 def jeu():
     #Lance le jeu du pendu.
     chances = 8
@@ -63,6 +75,8 @@ def jeu():
             print('***Saisie non valide***')
         if chances > 0 and len(lettres_connues) == len(mot_mystere):
             print('Vous avez gagné, le mot était : ' + mot_mystere)
+            score = chances
+            print('Votre score est : ' + str(score) + '\n' + 'Le meilleur score est : ' + str(check_meilleur_score(score)))
             break
     if len(lettres_connues) != len(mot_mystere):
         print('Dommage, le mot était : ' + mot_mystere)
