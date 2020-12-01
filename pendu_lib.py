@@ -14,3 +14,9 @@ def choix_mot():
     n = randint(0,len(liste_mots))
     mot = liste_mots[n-1]
     return mot
+
+def affichage()
+    mot=choix_mot()
+    mask=""
+    for i in mot:
+        mask=mask+'_'
