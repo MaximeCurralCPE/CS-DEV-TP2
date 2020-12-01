@@ -55,7 +55,6 @@ def check_meilleur_score(score):
     else:
         return meilleur_score
 
-
 def jeu():
     #Lance le jeu du pendu.
     chances = 8
