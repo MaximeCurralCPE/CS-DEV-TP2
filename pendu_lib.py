@@ -44,8 +44,5 @@ def jeu():
     while len(lettres_connues) != len(mot_mystere):
         lettre = input('Tapez votre lettre :')
         for val in check_lettre(str(lettre), str(mot_mystere)):
-            print(val)
             lettres_connues.append(val)
-        print(lettres_connues)
-        print(affichage(mot_mystere, lettres_connues))
     print('Vous avez gagné, le mot était' + mot_mystere)
