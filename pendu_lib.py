@@ -43,18 +43,19 @@ def jeu():
     mot_mystere = choix_mot()
     lettres_connues = []
     print(mot_mystere)
-    while len(lettres_connues) != len(mot_mystere):
-        while chances > 0:
-            lettre = input('Tapez votre lettre :')
-            if check_lettre(str(lettre), str(mot_mystere)) == []:
-                chances-=1
-            else:
-                for val in check_lettre(str(lettre), str(mot_mystere)):
-                    lettres_connues.append(val)
-            
-            print(affichage(mot_mystere,lettres_connues))
-            print(chances)
-            break
+    while chances > 0:
+        lettre = input('Tapez votre lettre :')
+        if check_lettre(str(lettre), str(mot_mystere)) == []:
+            chances-=1
+        else:
+            for val in check_lettre(str(lettre), str(mot_mystere)):
+                lettres_connues.append(val)
         
-    print('Vous avez gagné, le mot était' + mot_mystere)
+        print(affichage(mot_mystere,lettres_connues))
+        print(chances)
+        if chances > 0 and len(lettres_connues) == len(mot_mystere):
+            print('Vous avez gagné, le mot était : ' + mot_mystere)
+            break
+    if len(lettres_connues) != len(mot_mystere):
+        print('Dommage, le mot était : ' + mot_mystere)
 
