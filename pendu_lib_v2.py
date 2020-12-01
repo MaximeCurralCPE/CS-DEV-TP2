@@ -55,6 +55,7 @@ def check_meilleur_score(score):
     else:
         return meilleur_score
 
+
 def jeu():
     #Lance le jeu du pendu.
     chances = 8
@@ -77,6 +78,23 @@ def jeu():
             print('Vous avez gagné, le mot était : ' + mot_mystere)
             score = chances
             print('Votre score est : ' + str(score) + '\n' + 'Le meilleur score est : ' + str(check_meilleur_score(score)))
-            break
+            
+            replay = input('Voulez vous rejouer (o/n) : ')                                                  
+            while replay != 'o' and replay != 'n': 
+                print('\nValeur incorrect')
+                replay = input('Voulez vous rejouer (o/n) : ')
+            if replay=='o':
+                jeu()
+            else:
+                print('Merci d\'avoir joué ! A plus tard!' )
     if len(lettres_connues) != len(mot_mystere):
         print('Dommage, le mot était : ' + mot_mystere)
+
+        replay = input('Voulez vous rejouer (o/n) : ')
+        while replay != 'o' and replay != 'n': 
+                print('\nValeur incorrect')
+                replay = input('Voulez vous rejouer (o/n) : ')
+        if replay=='o':
+            jeu()
+        else:
+            print('Merci d\'avoir joué ! A plus tard!' )
