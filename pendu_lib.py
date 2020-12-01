@@ -15,8 +15,9 @@ def choix_mot():
     mot = liste_mots[n-1]
     return mot
 
-def affichage()
+def affichage():
     mot=choix_mot()
     mask=""
     for i in mot:
         mask=mask+'_'
+    print(mask)
