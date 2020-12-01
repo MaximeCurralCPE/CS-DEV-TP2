@@ -1,1 +1,1 @@
-[bison, alpine, accablant, anticorps, dimension, habitacle, dictionnaire, disproportion, anticonstitutionnellement]
+["bison","alpine","accablant","anticorps","dimension","habitacle","dictionnaire","disproportion","anticonstitutionnellement"]
