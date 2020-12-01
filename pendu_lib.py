@@ -37,6 +37,12 @@ def affichage(mot,lettres_decouvertes):
             mask += ' _ '
     return mask
 
+def check_input(lettre):
+    if isinstance(lettre,str) and len(lettre) == 1 and lettre.isnumeric() == False:
+        return True
+    else:
+        return False
+
 def jeu():
     #Lance le jeu du pendu.
     chances = 8
@@ -45,17 +51,18 @@ def jeu():
     print(mot_mystere)
     while chances > 0:
         lettre = input('Tapez votre lettre :')
-        if check_lettre(str(lettre), str(mot_mystere)) == []:
-            chances-=1
+        if check_input(lettre):
+            if check_lettre(str(lettre), str(mot_mystere)) == []:
+                chances-=1
+            else:
+                for val in check_lettre(str(lettre), str(mot_mystere)):
+                    lettres_connues.append(val)
+            print(affichage(mot_mystere,lettres_connues))
+            print('Il vous reste encore ' + str(chances) + ' chances')
         else:
-            for val in check_lettre(str(lettre), str(mot_mystere)):
-                lettres_connues.append(val)
-        
-        print(affichage(mot_mystere,lettres_connues))
-        print(chances)
+            print('***Saisie non valide***')
         if chances > 0 and len(lettres_connues) == len(mot_mystere):
             print('Vous avez gagné, le mot était : ' + mot_mystere)
             break
     if len(lettres_connues) != len(mot_mystere):
         print('Dommage, le mot était : ' + mot_mystere)
-
