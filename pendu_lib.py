@@ -4,9 +4,13 @@ Auteur : Maxime Curral et Hien Nguyen
 Date de creation : 01/12/2020
 '''
 
+from random import randint
+
 def choix_mot():
-    fichier = open('mots.txt',r)
-    nombre_lignes = 0
-    for ligne in fichier:
-        nombre_lignes += 1
-    n = randint(0,)
+    fichier = open('mots.txt','r')
+    contenu = fichier.readline()
+
+    liste_mots = contenu.split(' ')
+    n = randint(0,len(liste_mots))
+    mot = liste_mots[n]
+    return mot
