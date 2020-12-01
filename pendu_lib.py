@@ -29,13 +29,13 @@ def check_lettre(lettre,mot):
 def affichage(mot,lettres_decouvertes):
     #affiche le mot mystère avec des '_' à la place 
     # des lettres non découvertes.
-    mask=""
+    affichage_masque=""
     for i in range(len(mot)):
         if int(i) in lettres_decouvertes:
-            mask += mot[i]
+            affichage_masque += mot[i]
         else:
-            mask += ' _ '
-    return mask
+            affichage_masque += ' _ '
+    return affichage_masque
 
 def check_input(lettre):
     if isinstance(lettre,str) and len(lettre) == 1 and lettre.isnumeric() == False:
