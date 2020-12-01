@@ -38,6 +38,7 @@ def affichage(mot,lettres_decouvertes):
     return mask
 
 def jeu():
+    #Lance le jeu du pendu.
     mot_mystere = choix_mot()
     lettres_connues = []
     print(mot_mystere)
@@ -45,4 +46,5 @@ def jeu():
         lettre = input('Tapez votre lettre :')
         for val in check_lettre(str(lettre), str(mot_mystere)):
             lettres_connues.append(val)
+        print(affichage(mot_mystere,lettres_connues))
     print('Vous avez gagné, le mot était' + mot_mystere)
