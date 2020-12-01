@@ -12,5 +12,5 @@ def choix_mot():
 
     liste_mots = contenu.split(' ')
     n = randint(0,len(liste_mots))
-    mot = liste_mots[n]
+    mot = liste_mots[n-1]
     return mot
