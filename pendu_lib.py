@@ -24,8 +24,11 @@ def check_lettre(lettre,mot):
             lettres_decouvertes.append(i)
     return lettres_decouvertes
 
-def affichage():
-    mot=choix_mot()
+def affichage(mot,lettres_decouvertes):
     mask=""
-    for i in mot:
-        mask=mask+'_'
+    for i in range(len(mot)):
+        if i in lettres_decouvertes:
+            mask += mot[i]
+        else:
+            mask=mask+' _ '
+    return mask
