@@ -17,6 +17,8 @@ def choix_mot():
     return mot
 
 def check_lettre(lettre,mot):
+    #retourne une liste contenant les indexs pour lesquels la
+    # lettre entrée par le joueur est dans le mot mystère.
     lettres_decouvertes = []
     i = 0
     for i in range(len(mot)):
@@ -25,10 +27,18 @@ def check_lettre(lettre,mot):
     return lettres_decouvertes
 
 def affichage(mot,lettres_decouvertes):
+    #affiche le mot mystère avec des '_' à la place 
+    # des lettres non découvertes.
     mask=""
     for i in range(len(mot)):
         if i in lettres_decouvertes:
             mask += mot[i]
         else:
-            mask=mask+' _ '
+            mask += ' _ '
     return mask
+
+def jeu():
+    mot_mystere = choix_mot()
+    lettres_connues = []
+    while len(lettres_connues) != len(mot_mystere):
+        
