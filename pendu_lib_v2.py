@@ -1,13 +1,15 @@
 '''
-Sujet : CS-DEV TP 2
-Auteur : Maxime Curral et Hien Nguyen
+Sujet : CS-DEV TP 2 : pendu (console) version 2
+Auteur : Maxime Curral
 Date de creation : 01/12/2020
 '''
 
+
 from random import randint
 
+
 def choix_mot():
-    # retourne un mot au hasard du fichiermots.txt
+    # Retourne un mot au hasard du fichier mots.txt
     fichier = open('mots.txt','r')
     contenu = fichier.readline()
     liste_mots = contenu.split(' ')
@@ -18,11 +20,9 @@ def choix_mot():
 
 
 def check_lettre(lettre,mot):
-    # retourne une liste contenant les indexs pour lesquels la
-    # lettre entrée par le joueur est dans le mot mystère.
+    # Retourne une liste contenant les indexs pour lesquels la lettre entrée par le joueur est dans le mot mystère.
     lettres_decouvertes = []
     i = 0
-
     for i in range(len(mot)):
         if lettre == mot[i]:
             lettres_decouvertes.append(i)
@@ -30,10 +30,8 @@ def check_lettre(lettre,mot):
 
 
 def affichage(mot,lettres_decouvertes):
-    # affiche le mot mystère avec des '_' à la place 
-    # des lettres non découvertes.
-    affichage_masque=""
-
+    # Affiche le mot mystère avec des '_' à la place  des lettres non découvertes.
+    affichage_masque = ""
     for i in range(len(mot)):
         if int(i) in lettres_decouvertes:
             affichage_masque += mot[i]
@@ -43,8 +41,7 @@ def affichage(mot,lettres_decouvertes):
 
 
 def check_input(lettre):
-    # Vérifie que la saisie est bien un seul caractère et bien une lettre
-
+    # Vérifie que la saisie est bien une seule lettre.
     if isinstance(lettre,str) and len(lettre) == 1 and lettre.isnumeric() == False:
         return True
     else:
@@ -52,17 +49,15 @@ def check_input(lettre):
 
 
 def check_meilleur_score(score):
-    # intérroge le fichier score pour comparer le score de la partie et le meilleur score réalisé
+    # Interroge le fichier score pour comparer le score de la partie et le meilleur score réalisé, et le met à jour si besoin.
     fichier = open('score.txt','r')
     meilleur_score = fichier.readline()
     fichier.close
-
     if int(meilleur_score) < score:
         fichier = open('score.txt','w')
         fichier.write(str(score))
         fichier.close
         return score
-
     else:
         return meilleur_score
 
@@ -72,10 +67,10 @@ def jeu():
     chances = 8
     mot_mystere = choix_mot()                                                               # Génération aléatoire du mot
     lettres_connues = []                                            
-    lettres_saisies=[]
+    lettres_saisies = []
 
     while chances > 0:                                                                      # Le jeu se poursuit tant qu'il reste des tentatives
-        lettre = input('Tapez votre lettre :')                                              # Saisi de la lettre
+        lettre = input('Tapez votre lettre :')                                              # Saisie de la lettre
     
         if check_input(lettre):                                                             # Vérification de la saisie
     
@@ -85,7 +80,7 @@ def jeu():
             lettres_saisies.append(lettre)                                                  # Ajout de la lettre pas encore saisie dans la liste de lettres déjà saisies 
     
             if check_lettre(str(lettre), str(mot_mystere)) == []:                           # Si la lettre saisie n'est pas dans le mot
-                chances-=1                                                                  # --> tentatives -1
+                chances -= 1                                                                  # --> tentatives -1
     
             else:
                 for val in check_lettre(str(lettre), str(mot_mystere)):                     # Si la lettre est dans le mot,
@@ -99,7 +94,7 @@ def jeu():
 
         if chances > 0 and len(lettres_connues) == len(mot_mystere):                        # Condtions de victoire
             print('Vous avez gagné, le mot était : ' + mot_mystere)                         
-            score = chances                                                                 # affichage du score et du meilleur score jusqu'à maintenant
+            score = chances                                                                 # Affichage du score et du meilleur score jusqu'à maintenant
             print('Votre score est : ' + str(score) + '\n' + 'Le meilleur score est : ' + str(check_meilleur_score(score)))            
             replay()
 
@@ -107,11 +102,13 @@ def jeu():
         print('Dommage, le mot était : ' + mot_mystere)
         replay()
 
+
 def replay():
+    # Demande au joueur s'il veut faire une autre partie.
     replay = input('Voulez-vous rejouer ? (o/n)')
-    if replay == 'o':
+    if replay == 'o':                                                                       # S'il veut rejouer, le jeu se relance.
         jeu()
-    elif replay == 'n':
+    elif replay == 'n':                                                                     # Sinon, le programme s'arrête.
         exit()
-    else:
+    else:                                                                                   # Si la saisie est invalide, la fonction recommence.
         replay()
