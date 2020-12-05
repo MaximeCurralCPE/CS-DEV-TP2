@@ -1,6 +1,6 @@
 '''
-Sujet : CS-DEV TP 2
-Auteur : Maxime Curral et Hien Nguyen
+Sujet : CS-DEV TP 2 : pendu (console) version 1
+Auteur : Maxime Curral
 Date de creation : 01/12/2020
 '''
 
